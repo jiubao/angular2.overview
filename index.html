@@ -44,32 +44,36 @@
 					<h1>Angular 2.0 Overview</h1>
 					<h3>angular 2.0 series 1</h3>
 					<p>
-						<small>Created by <a href="https://github.com/jiubao">sxia</a> - <a href="https://github.com/jiubao">https://github.com/jiubao</a><br/>
-            <a href="http://www.movoto.com">sxia@movoto.com</a></small>
+						<small>By <a href="https://github.com/jiubao">sxia</a> - <a href="https://github.com/jiubao">https://github.com/jiubao</a><br/>
+              <!--
+            <a href="http://www.movoto.com">sxia@movoto.com</a>
+          -->
+            </small>
 					</p>
 				</section>
 
 				<section>
 					<h2>Agenda</h2>
 					<ul>
-						<li>Overview</li>
+						<li>Architecture Overview</li>
 						<li>Shadow DOM</li>
 						<li>Dependency Injection</li>
             <li>Decorator</li>
+						<li>Component interaction</li>
             <li>
               Change Detection
               <ul>
                 <li>zone, immutable, observable</li>
               </ul>
             </li>
-						<li>Component interaction</li>
 						<li>Q & A</li>
+            <li>Coding time</li>
 					</ul>
 				</section>
 
 				<section>
           <section>
-  					<h2>Overview</h2>
+  					<h2><a href="https://angular.io/docs/ts/latest/guide/architecture.html">ARCHITECTURE OVERVIEW</a></h2>
   					<ul>
               <li>Module</li>
               <li>Component</li>
@@ -116,6 +120,33 @@
             </ul>
           </section>
           <section>
+            <h3>Articles</h3>
+            <ul>
+              <li>
+                Shadow DOM 101
+                <small><a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/">http://www.html5rocks.com/en/tutorials/webcomponents/customelements/</a></small>
+              </li>
+              <li>
+                Shadow DOM 201
+                <small>
+                  <a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-201/">http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-201/</a>
+                </small>
+              </li>
+              <li>
+                Shadow DOM 301
+                <small>
+                  <a href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-301/">http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-301/</a>
+                </small>
+              </li>
+              <li>
+                Custom Elements
+                <small>
+                  <a href="http://www.html5rocks.com/en/tutorials/webcomponents/customelements/">http://www.html5rocks.com/en/tutorials/webcomponents/customelements/</a>
+                </small>
+              </li>
+            </ul>
+          </section>
+          <section>
             <h3>Questions:</h3>
             <ul>
               <li>SEO</li>
@@ -126,32 +157,116 @@
 
 
 				<section>
-					<h2>Dependency Injection</h2>
-          <ul>
-            <li>Constructor injection</li>
-            <li>Hierarchical injectors</li>
-          </ul>
+          <section>
+					  <h2>Dependency Injection</h2>
+          </section>
+          <section>
+            <h3>Constructor injection</h3>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+@Component({
+  providers: [HeroService]
+})
+export class AppComponent {
+  constructor(private _heroService: HeroService) { }
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h3>Hierarchical injectors</h3>
+            <pre>
+              <code class="hljs" data-trim contenteditable>
+@Component({
+  providers: []
+})
+export class HeroComponent {
+  constructor(private _heroService: HeroService) { }
+}
+              </code>
+            </pre>
+          </section>
 				</section>
 
 				<section>
 					<h2>Decorator</h2>
+          <pre>
+            <code class="hljs" data-trim contenteditable>
+@Component({
+  selector: 'my-app',
+  template:`
+    <h1>{{title}}</h1>
+    <h2>My Heroes</h2>
+  `,
+  styles:[`
+    .heroes {
+      margin: 0 0 2em 0;
+      list-style-type: none;
+      padding: 0;
+      width: 10em;
+    }
+  `]
+})
+export class AppComponent {
+  ...
+            </code>
+          </pre>
 				</section>
 
 				<section>
-					<h2>Component Interaction</h2>
+          <section>
+  					<h2>Component Interaction</h2>
+            <a href="https://angular.io/docs/ts/latest/cookbook/component-communication.html">
+              https://angular.io/docs/ts/latest/cookbook/component-communication.html
+            </a>
+          </section>
+          <section>
+            <ul>
+              <li>Parent <-> Children</li>
+              <li>Space-travel</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Reactive Programming</h3>
+            <a href="https://github.com/Reactive-Extensions/RxJS">
+              The Reactive Extensions for JavaScript (RxJS)
+            </a>
+          </section>
 				</section>
 
 				<section>
-					<h2>Change Detection</h2>
-				</section>
+          <section>
+					  <h2>Change Detection</h2>
+          </section>
+          <section>
+            <h3>Two Phases</h3>
+            <ol>
+              <li>Developer is responsible for updating the application model.</li>
+              <li>
+                Angular is responsible for reflecting the state of the model in the view.
+                <br/>(The framework does it automatically on every <a href="http://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html">VM turn</a>.)</li>
+            </ol>
+          </section>
 
-				<section>
-					<h2>Coding</h2>
+          <section>
+            <ul>
+              <li>TTL === 1(0)</li>
+              <li>immutable</li>
+              <li>observable</li>
+              <li>zone.js</li>
+            </ul>
+          </section>
+
 				</section>
 
 				<section>
 					<h2>Q & A</h2>
 				</section>
+
+				<section>
+					<h2>Let's coding</h2>
+				</section>
+
 			</div>
 
 		</div>
